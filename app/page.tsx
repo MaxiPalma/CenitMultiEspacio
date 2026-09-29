@@ -1,3 +1,5 @@
+import FormularioConsulta from "@/components/FormularioConsulta";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center gap-6 p-8">
@@ -5,6 +7,7 @@ export default function Home() {
       <p className="text-lg text-center max-w-md">
         En un mundo de IA, todavía creemos en el valor de la conexión humana.
       </p>
+      <FormularioConsulta />
     </main>
   );
 }
