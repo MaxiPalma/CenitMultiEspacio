@@ -43,6 +43,10 @@ export default function FormularioConsulta() {
       </select>
       <input name="fecha_tentativa" type="date" className={campo} />
       <textarea name="mensaje" rows={3} placeholder="Contanos sobre tu evento" className={campo} />
+      <div
+        className="cf-turnstile"
+        data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+      />
       <button
         type="submit"
         disabled={estado === "enviando"}
