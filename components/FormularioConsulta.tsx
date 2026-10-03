@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type SubmitEvent } from "react";
-import { supabase } from "@/lib/supabase";
 
 const campo = "rounded border border-white/20 bg-white/5 p-3 text-white";
 
@@ -15,15 +14,12 @@ export default function FormularioConsulta() {
     const formulario = e.currentTarget;
     const datos = new FormData(formulario);
 
-    const { error } = await supabase.from("consultas").insert({
-      nombre: datos.get("nombre"),
-      telefono: datos.get("telefono"),
-      tipo_evento: datos.get("tipo_evento"),
-      fecha_tentativa: datos.get("fecha_tentativa") || null,
-      mensaje: datos.get("mensaje"),
+    const respuesta = await fetch("/api/enviar-consulta", {
+      method: "POST",
+      body: datos,
     });
 
-    if (error) {
+    if (!respuesta.ok) {
       setEstado("error");
     } else {
       setEstado("ok");
